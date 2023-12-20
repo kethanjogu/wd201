@@ -1,68 +1,34 @@
-const todoList = () => {
-  const all = []; // Use 'const' to declare the array
+  const todoList = () => {
+  const all = [];
   const add = (todoItem) => {
-    all.push({ todoItem, completed: false }); // Add the todoItem with a completed property
+    all.push(todoItem);
   };
-  
   const markAsComplete = (index) => {
-    if (all[index]) {
-      all[index].completed = true;
-    } else {
-      console.error('Invalid index');
-    }
+    all[index].completed = true;
   };
 
+  let today = new Date().toLocaleDateString("en-CA");
+
   const overdue = () => {
-    // Write the date check condition here and return the array of overdue items accordingly.
-    // FILL YOUR CODE HERE
-    // ..
-    // ..
-    // ..
-    return all.filter(
-      (item) => item.dueDate < new Date().toLocaleDateString("en-CA")
-    );
+    return all.filter((item) => item.dueDate < today);
   };
 
   const dueToday = () => {
-    // Write the date check condition here and return the array of todo items that are due today accordingly.
-    // FILL YOUR CODE HERE
-    // ..
-    // ..
-    // ..
-    return all.filter(
-      (item) => item.dueDate == new Date().toLocaleDateString("en-CA")
-    );
+    return all.filter((item) => item.dueDate === today);
   };
 
   const dueLater = () => {
-    // Write the date check condition here and return the array of todo items that are due later accordingly.
-    // FILL YOUR CODE HERE
-    // ..
-    // ..
-    // ..
-    return all.filter(
-      (item) => item.dueDate > new Date().toLocaleDateString("en-CA")
-    );
+    return all.filter((item) => item.dueDate > today);
   };
 
-  const toDisplayableList = (list) => {
-    // Format the To-Do list here, and return the output string as per the format given above.
-    // FILL YOUR CODE HERE
-    // ..
-    // ..
-    // ..
-    // return OUTPUT_STRING
-    return list
-      .map(
-        (item) =>
-          ` ${item.completed ? "[x]" : "[ ]"} ${item.title} ${
-            item.dueDate == new Date().toLocaleDateString("en-CA")
-              ? ""
-              : item.dueDate
-          }`
-      )
-      .join("\n");
-  };
+  
+  const toDisplayableList = (list) =>{
+    return list.map((list)=>{
+    const complttionStatus = item.completed ? "[x]" : "";
+    const displayedDate = item.dueDate === new Date().toLocaleDateString("en-CA") ? "" : item.dueDate;
+    return `${complttionStatus} ${item.title} ${displayedDate}`
+     } )
+  }
 
   return {
     all,
@@ -74,4 +40,5 @@ const todoList = () => {
     toDisplayableList,
   };
 };
+
 module.exports = todoList;
