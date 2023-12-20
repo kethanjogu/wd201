@@ -3,6 +3,7 @@ const todoList = () => {
   const add = (todoItem) => {
     all.push({ todoItem, completed: false }); // Add the todoItem with a completed property
   };
+  
   const markAsComplete = (index) => {
     if (all[index]) {
       all[index].completed = true;
