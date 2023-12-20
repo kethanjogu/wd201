@@ -1,11 +1,14 @@
-/* eslint-disable no-undef */
 const todoList = () => {
-  all = [];
+  const all = []; // Use 'const' to declare the array
   const add = (todoItem) => {
-    all.push(todoItem);
+    all.push({ todoItem, completed: false }); // Add the todoItem with a completed property
   };
   const markAsComplete = (index) => {
-    all[index].completed = true;
+    if (all[index]) {
+      all[index].completed = true;
+    } else {
+      console.error('Invalid index');
+    }
   };
 
   const overdue = () => {
