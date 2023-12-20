@@ -1,22 +1,25 @@
 {
-  "name": "todo-cli",
+  "name": "todolist2",
   "version": "1.0.0",
-  "description": "My Todo-cli application",
-  "main": "todo.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
-    "prepare": "cd .. && husky install todo-cli/.husky"
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "prettier --write ."
+    ]
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "husky": "^8.0.3",
-    "jest": "^29.4.3"
+    "eslint": "^8.27.0",
+    "husky": "^8.0.2",
+    "jest": "^29.3.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
   }
-}
-"lint-staged": {
-  "*.js": [
-    "eslint",
-    "prettier --write ."
-  ]
 }
